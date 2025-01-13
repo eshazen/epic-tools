@@ -14,6 +14,8 @@ public:
   double* get_y();		  // access Y output
   void print();			  // print the arrays for debug
   int npt();			  // return current point count
+  void debugLevel(int d);	  // set debug level
+  void Dump();
 private:
   double cur_x, cur_y;		// current drawing position
   double* xout;			// pointers for output array
@@ -22,6 +24,7 @@ private:
   double* yp;
   int maxp;			// remaining space in output arrays
   int angl;			// rotation quadrant 0, 1, 2, 3
+  int debug;
 };
 
 
