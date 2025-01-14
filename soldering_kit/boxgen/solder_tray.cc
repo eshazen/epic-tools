@@ -17,9 +17,9 @@
 
 #ifdef SMALL_TEST
 
-static const int TabsA = 3;	// long edge tab count
+static const int TabsA = 4;	// long edge tab count
 static const int TabsB = 3;	// width edge tab count
-static const int TabsC = 3;	// vertical edge tab count
+static const int TabsC = 2;	// vertical edge tab count
 
 static const double tlen = 3;	/* total length */
 static const double twid = 2;		/* width */
@@ -46,8 +46,8 @@ static const double kerf = 0.004;	/* kerf allowance for laser cutting */
 static const double len = tlen-2*toff; // inside length
 static const double wid = twid-2*toff; // inside width
 
-#define ZeroX (len/2)
-#define ZeroY (wid/2)
+#define ZeroX (-height)
+#define ZeroY (height/2)
 
 
 int main( int argc, char *argv[]) {
@@ -73,17 +73,17 @@ int main( int argc, char *argv[]) {
     // left side
     b->draw( ZeroX, ZeroY);
     b->draw( -(SPC+height), 0);
-    tabbedSide( b, height, wid, -TabsC, -TabsB, -TabsC, -TabsB);
+    tabbedSide( b, height, wid, TabsC, -TabsB, TabsC, -TabsB);
   
     // right side
     b->draw( ZeroX, ZeroY);
     b->draw( len+SPC, 0);
-    tabbedSide( b, height, wid, -TabsC, -TabsB, -TabsC, -TabsB);
+    tabbedSide( b, height, wid, TabsC, -TabsB, TabsC, -TabsB);
 
     // top ring
     b->draw( ZeroX, ZeroY);
     b->draw( len, height+toff+3*SPC);
-    tabbedInside( b, len, wid, TabsA, TabsB, TabsA, TabsB);
+    tabbedInside( b, len, wid, -TabsA, -TabsB, -TabsA, -TabsB);
     b->rotate( 0);
     b->draw( ZeroX, ZeroY);
 
