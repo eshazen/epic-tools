@@ -2,6 +2,9 @@
 
 #include "Tabs.hh"
 
+double Tabs::kerf;
+double Tabs::thick;
+
 Tabs::Tabs() { };
 
 Tabs::~Tabs() { };
@@ -12,8 +15,10 @@ Tabs::Tabs( double k, double t) {
 }
 
 void Tabs::setKerf( double k) { kerf = k; };
-
 double Tabs::getKerf() { return kerf; }
+
+void Tabs::setThick( double t) { thick = t; };
+double Tabs::getThick() { return thick; };
 
 int Tabs::drawTabs( Boxy* box, int ntabs, double len) {
   int n = (ntabs<0) ? -ntabs : ntabs;
@@ -43,3 +48,50 @@ int Tabs::drawTabs( Boxy* box, int ntabs, double len) {
 
   return 0;
 }
+
+
+// draw a rectangle with 4 sides with tabs
+// slen = length in X;  swid = width in Y
+// nt, nr, nb, nl = # tabs top, right, bottom, left
+//
+void tabbedSide( Boxy* b, double slen, double swid, 
+		 int nt, int nr, int nb, int nl) {
+  Tabs top( Tabs::kerf, Tabs::thick);
+  b->rotate( 0);
+  top.drawTabs( b, nt, slen);
+
+  Tabs right( Tabs::kerf, Tabs::thick);
+  b->rotate( 270);
+  right.drawTabs( b, nr, swid);
+ 
+  Tabs bottom( Tabs::kerf, Tabs::thick);
+  b->rotate( 180);
+  bottom.drawTabs( b, nb, slen);
+ 
+  Tabs left( Tabs::kerf, Tabs::thick);
+  b->rotate( 90);
+  left.drawTabs( b, nl, swid);
+}
+
+// draw a rectangle with 4 sides with tabs
+// but as an opening in a larger surface
+//
+void tabbedInside( Boxy* b, double slen, double swid, 
+		 int nt, int nr, int nb, int nl) {
+  Tabs top( Tabs::kerf, Tabs::thick+Tabs::kerf);
+  b->rotate( 180);
+  top.drawTabs( b, nt, slen);
+
+  Tabs right( Tabs::kerf, Tabs::thick+Tabs::kerf);
+  b->rotate( 90);
+  right.drawTabs( b, nr, swid);
+ 
+  Tabs bottom( Tabs::kerf, Tabs::thick+Tabs::kerf);
+  b->rotate( 0);
+  bottom.drawTabs( b, nb, slen);
+ 
+  Tabs left( Tabs::kerf, Tabs::thick+Tabs::kerf);
+  b->rotate( 270);
+  left.drawTabs( b, nl, swid);
+}
+

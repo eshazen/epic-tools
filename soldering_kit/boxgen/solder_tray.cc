@@ -14,7 +14,7 @@ static const double tlen = 18.125;	/* total length */
 static const double twid = 8.5;		/* width */
 static const double toff = 0.625;	/* lip width (outer minus inner dim) */
 static const double height = 1.25;	/* depth of box */
-static const double mat = 0.125;	/* material thickness (for tabs) */
+static const double thick = 0.125;	/* material thickness (for tabs) */
 static const double kerf = 0.004;	/* kerf allowance for laser cutting */
 //static const double kerf = 0.1;	/* kerf allowance for laser cutting */
 
@@ -25,54 +25,12 @@ static const double wid = twid-2*toff; // inside width
 #define ZeroY (wid/2)
 
 
-// draw a rectangle with 4 sides with tabs
-// slen = length in X;  swid = width in Y
-// nt, nr, nb, nl = # tabs top, right, bottom, left
-//
-void tabbedSide( Boxy* b, double slen, double swid, 
-		 int nt, int nr, int nb, int nl) {
-  Tabs top( kerf, mat);
-  b->rotate( 0);
-  top.drawTabs( b, nt, slen);
-
-  Tabs right( kerf, mat);
-  b->rotate( 270);
-  right.drawTabs( b, nr, swid);
- 
-  Tabs bottom( kerf, mat);
-  b->rotate( 180);
-  bottom.drawTabs( b, nb, slen);
- 
-  Tabs left( kerf, mat);
-  b->rotate( 90);
-  left.drawTabs( b, nl, swid);
-}
-
-// draw a rectangle with 4 sides with tabs
-// but as an opening in a larger surface
-//
-void tabbedInside( Boxy* b, double slen, double swid, 
-		 int nt, int nr, int nb, int nl) {
-  Tabs top( kerf, mat);
-  b->rotate( 180);
-  top.drawTabs( b, nt, slen);
-
-  Tabs right( kerf, mat);
-  b->rotate( 90);
-  right.drawTabs( b, nr, swid);
- 
-  Tabs bottom( kerf, mat);
-  b->rotate( 0);
-  bottom.drawTabs( b, nb, slen);
- 
-  Tabs left( kerf, mat);
-  b->rotate( 270);
-  left.drawTabs( b, nl, swid);
-}
-
 int main( int argc, char *argv[]) {
   Boxy* b = new Boxy(10000);
   //  b->debugLevel(1);
+
+  Tabs::kerf = kerf;
+  Tabs::thick = thick;
 
    // bottom
    tabbedSide( b, len, wid, 5, -3, 5, -3);
