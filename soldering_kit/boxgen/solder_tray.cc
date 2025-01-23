@@ -11,7 +11,7 @@
 #define SPC 0.5
 
 
-#define SMALL_TEST
+// #define SMALL_TEST
 
 
 
@@ -32,10 +32,10 @@ static const int TabsA = 5;	// long edge tab count
 static const int TabsB = 3;	// width edge tab count
 static const int TabsC = 3;	// vertical edge tab count
 
-static const double tlen = 18.125;	/* total length */
+static const double tlen = 17;	/* total length */
 static const double twid = 8.5;		/* width */
-static const double toff = 0.625;	/* lip width (outer minus inner dim) */
-static const double height = 1.25;	/* depth of box */
+static const double toff = 0.563;	/* lip width (outer minus inner dim) */
+static const double height = 1.5;	/* depth of box */
 
 #endif
 
