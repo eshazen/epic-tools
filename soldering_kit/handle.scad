@@ -19,7 +19,6 @@ bot_thk = 2.5;
 
 handle_open_hgt = 1.4*mm;
 handle_open_wid = 3.5*mm;
-handle_top = 0.25*mm;
 
 rnd = 5;			/* round edge dia */
 
@@ -27,8 +26,8 @@ rnd = 5;			/* round edge dia */
 // origin at xyz=0
 module rounded_cube( dx, dy, dz, dia) {
      translate( [dia/2, dia/2, 0]) {
-	  minkowski() {
-	       cube( [dx-dia, dy-dia, dz]);
+       	  minkowski() {
+	       cube( [dx-dia, dy-dia, .01]);
 	       cylinder( h=dz, d=dia);
 	  }
      }
