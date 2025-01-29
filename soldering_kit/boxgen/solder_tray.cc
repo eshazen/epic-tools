@@ -40,8 +40,8 @@ static const double height = 1.5;	/* depth of box */
 #endif
 
 static const double thick = 0.125;	/* material thickness (for tabs) */
-static const double kerf = 0.004;	/* kerf allowance for laser cutting */
-//static const double kerf = 0.1;	/* kerf allowance for laser cutting */
+// -7 seems good after testing
+static const double kerf = -0.007;	/* kerf allowance for laser cutting */
 
 static const double len = tlen-2*toff; // inside length
 static const double wid = twid-2*toff; // inside width
