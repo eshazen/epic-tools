@@ -15,7 +15,7 @@ headroom = 2.5*mm;		/* space above foam to box lid */
 
 bot_len = slot_len + 1*mm;
 bot_wid = 1*mm;
-bot_thk = 2.5;
+bot_thk = 3.5;
 
 handle_open_hgt = 1.4*mm;
 handle_open_wid = 3.5*mm;
@@ -34,7 +34,7 @@ module rounded_cube( dx, dy, dz, dia) {
 }
 
 module bottom_base() {
-     translate( [-bot_len/2, -bot_wid/2, -foam_thk-bot_thk]) {
+     translate( [-bot_len/2, -bot_wid/2, -foam_thk+1]) {
 	  rounded_cube( bot_len, bot_wid, bot_thk, rnd);
      }
      rotate( [90, 0, 0])
