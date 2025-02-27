@@ -22,18 +22,19 @@ ntray = 10;
 
 label_wid = 0.5*mm;
 
-t_wid = pitch*ntray + 2*wall-c_spc;
-t_len = c_len + 2*wall + label_wid;
+wid_over = 0.4;
+len_over = 0.0;
+
+t_wid = pitch*ntray + 2*wall-c_spc+wid_over*2;
+t_len = c_len + 2*wall + label_wid + len_over*2;
 t_dep = c_dep + c_floor;
 
 lid_thk = 1;
 lid_hgt = 5;
 lid_wall = 1;
 
-lid_over = 0;
-
-lid_wid = t_wid + lid_wall*2 + lid_over*2;
-lid_len = t_len + lid_wall*2 + lid_over*2;
+lid_wid = t_wid + lid_wall*2;
+lid_len = t_len + lid_wall*2;
 
 module lid() {
      difference() {
