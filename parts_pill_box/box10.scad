@@ -29,7 +29,7 @@ labels2 = ["R5-12", "R1,2,4", "R3", "C1", "D1-8", "D11", "U1",
 	   "SW1", "D9-10", "BATT"];
 
 pitch = c_wid + c_spc;
-ntray = 3;
+ntray = 10;
 
 t_wid = pitch*ntray + 2*wall-c_spc;
 t_len = c_len + 2*wall + label_wid;
