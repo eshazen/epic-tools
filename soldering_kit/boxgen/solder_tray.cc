@@ -37,6 +37,10 @@ static const double twid = 8.5;		/* width */
 static const double toff = 0.563;	/* lip width (outer minus inner dim) */
 static const double height = 1.5;	/* depth of box */
 
+// corner detail
+static const double angl = 1.125;
+static const double tab = 0.5;
+
 #endif
 
 static const double thick = 0.125;	/* material thickness (for tabs) */
@@ -87,11 +91,27 @@ int main( int argc, char *argv[]) {
     b->rotate( 0);
     b->draw( ZeroX, ZeroY);
 
-    b->draw( -toff, height+3*SPC);
-    b->drawr( tlen, 0);
-    b->drawr( 0, twid);
-    b->drawr( -tlen, 0);
-    b->drawr( 0, -twid);
+    // draw the outline
+    b->draw( -toff-tab, height+3*SPC+angl);
+    // lower left corner
+    //    b->drawr( 0, angl);
+    b->drawr( tab, 0);
+    b->drawr( angl, -angl);
+    b->drawr( tlen-2*angl, 0);
+    b->drawr( angl, angl);
+    b->drawr( tab, 0);
+    b->drawr( 0, twid-2*angl);
+    b->drawr( -tab, 0);
+    b->drawr( -angl, angl);
+    b->drawr( -tlen+2*angl, 0);
+    b->drawr( -angl, -angl);
+    b->drawr( -tab, 0);
+    b->drawr( 0, -twid-2*angl);
+
+    //    b->drawr( tlen, 0);
+    //    b->drawr( 0, twid);
+    //    b->drawr( -tlen, 0);
+    //    b->drawr( 0, -twid);
 
   b->print();
 }

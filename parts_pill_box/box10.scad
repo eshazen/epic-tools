@@ -9,7 +9,7 @@ mm = 25.4;
 
 // compartment inner dimensions
 c_wid = 0.75*mm;
-c_len = 1.5*mm;
+c_len = 1.75*mm;
 c_dep = 0.5*mm;
 c_rad = 0.25*mm;		/* rounding radius */
 
@@ -40,7 +40,7 @@ module label( txt) {
 }
 
 difference() {
-     cube( [t_wid, t_len, t_dep]);
+  color("darkgreen") roundedcube( [t_wid, t_len, t_dep], false, 1);
      // cavities for parts
      translate( [wall, wall, wall]) {
 	  for( i=[0:ntray-1]) {
@@ -55,7 +55,7 @@ difference() {
 
 // text labels
 translate( [wall+pitch/2, wall+c_len+1, t_dep-text_thk-e]) {
-     color("red")
+     color("white")
      for( i=[0:ntray-1]) {
 	  translate( [i*pitch, 1, 0]) {
 	       linear_extrude( text_thk) label( labels1[i]);
