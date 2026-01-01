@@ -10,9 +10,9 @@ mm = 25.4;
 // compartment inner dimensions
 c_wid = 0.75*mm;
 c_len = 1.75*mm;
-c_dep = 0.5*mm;
+c_dep = 0.5*mm;			/* depth */
+//c_dep = 0.15*mm;			/* depth */
 c_rad = 0.25*mm;		/* rounding radius */
-
 c_spc = 2.5;			/* space between compartments */
 wall = 2;
 c_floor = 2.5;
@@ -30,6 +30,7 @@ labels2 = ["R5-12", "R1,2,4", "R3", "C1", "D1-8", "D11", "U1",
 
 pitch = c_wid + c_spc;
 ntray = 10;
+// ntray = 1;			/* FIXME */
 
 t_wid = pitch*ntray + 2*wall-c_spc;
 t_len = c_len + 2*wall + label_wid;
