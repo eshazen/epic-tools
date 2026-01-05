@@ -11,8 +11,8 @@ mm = 25.4;
 c_wid = 0.75*mm;
 c_len = 1.75*mm;
 c_dep = 0.5*mm;			/* depth */
-//c_dep = 0.15*mm;			/* depth */
 c_rad = 0.25*mm;		/* rounding radius */
+
 c_spc = 2.5;			/* space between compartments */
 wall = 2;
 c_floor = 2.5;

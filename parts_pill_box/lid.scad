@@ -9,7 +9,7 @@ mm = 25.4;
 
 // compartment inner dimensions
 c_wid = 0.75*mm;
-c_len = 1.5*mm;
+c_len = 1.75*mm;
 c_dep = 0.5*mm;
 c_rad = 0.25*mm;		/* rounding radius */
 
